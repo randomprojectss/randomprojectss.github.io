@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Protected Script</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #content { display: none; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Enter Password to Access the Script</h1>
+    <input type="password" id="password" placeholder="Enter password">
+    <button onclick="checkPassword()">Submit</button>
+    <p id="error" class="error"></p>
+    
+    <div id="content">
+        <h2>Your Lua Script</h2>
+        <pre>
+return function(scriptKey)
+    -- Your Lua script goes here
+    -- (You can use the Lua script from before)
+end
+        </pre>
+    </div>
+
+    <script>
+        const correctPassword = "yourPassword"; // Change this to your desired password
+
+        function checkPassword() {
+            const passwordInput = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error");
+
+            if (passwordInput === correctPassword) {
+                document.getElementById("content").style.display = "block";
+                errorMessage.textContent = "";
+            } else {
+                errorMessage.textContent = "Incorrect password. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>
